@@ -6,7 +6,8 @@ public class ConverterApplication {
 
         int LAST_ITEM_INDEX = args.length-1;
         int TYPE_INDEX = args.length-2;
-        SimpleCsvConverter csvConverter = new SimpleCsvConverter();
+        FileReader fileReader = new FileReader();
+        SimpleCsvConverter csvConverter = new SimpleCsvConverter(fileReader);
 
         if(args.length == 0 || !(args[LAST_ITEM_INDEX].contains(".csv"))) {
             System.out.println("No input file defined");

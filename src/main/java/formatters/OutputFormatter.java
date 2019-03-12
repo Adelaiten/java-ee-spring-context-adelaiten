@@ -1,3 +1,5 @@
+package formatters;
+
 import java.util.List;
 
 public interface OutputFormatter {

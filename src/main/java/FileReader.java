@@ -7,11 +7,11 @@ import java.util.List;
 public class FileReader {
 
     public List<String[]> readData(String file) {
-        BufferedReader bfr = null;
-        String line = "";
+        BufferedReader bfr;
+        String line;
         String regex = "[,;/|\\s]";
         List<String[]> dataList = new ArrayList<String[]>();
-        
+
         try {
             bfr = new BufferedReader(new java.io.FileReader(file));
             while((line = bfr.readLine()) != null) {
