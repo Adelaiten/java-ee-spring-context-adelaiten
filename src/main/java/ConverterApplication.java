@@ -4,6 +4,8 @@ public class ConverterApplication {
 
     public static void main(String[] args) {
 
+
+        String filePath = "/home/karol/codecool/Codecool-advanced-module/III SI-Week/java-ee-spring-context-Adelaiten/src/main/resources/";
         int LAST_ITEM_INDEX = args.length-1;
         int TYPE_INDEX = args.length-2;
         FileReader fileReader = new FileReader();
@@ -16,12 +18,19 @@ public class ConverterApplication {
         }
         String type = "";
 
+        filePath += args[LAST_ITEM_INDEX];
         if(TYPE_INDEX >= 0) {
             type = args[TYPE_INDEX];
         }
 
-        String filePath = args[LAST_ITEM_INDEX];
-        FileTypes fileType = FileTypes.getType(type);
+        FileTypes fileType;
+
+        if(type.equals("")) {
+            fileType = FileTypes.TABLE;
+        }else {
+            fileType = FileTypes.getType(type);
+
+        }
 
         switch(fileType) {
             case JSON:

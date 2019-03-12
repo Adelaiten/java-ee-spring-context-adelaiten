@@ -11,7 +11,7 @@ public class JsonOutputFormatter implements OutputFormatter {
         for(String[] array : data) {
             sb.append("[");
             for(String word : array) {
-                sb.append(",\"" + word + "\"");
+                sb.append("\"" + word + "\",");
             }
             sb.append("]");
         }
