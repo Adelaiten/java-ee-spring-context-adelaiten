@@ -6,22 +6,31 @@ public class ConverterApplication {
 
         int LAST_ITEM_INDEX = args.length-1;
         int TYPE_INDEX = args.length-2;
+        SimpleCsvConverter csvConverter = new SimpleCsvConverter();
 
         if(args.length == 0 || !(args[LAST_ITEM_INDEX].contains(".csv"))) {
             System.out.println("No input file defined");
 
             System.exit(0);
         }
+        String type = "";
 
-        String type = args[TYPE_INDEX];
+        if(TYPE_INDEX >= 0) {
+            type = args[TYPE_INDEX];
+        }
+
+        String filePath = args[LAST_ITEM_INDEX];
         FileTypes fileType = FileTypes.getType(type);
 
         switch(fileType) {
             case JSON:
+                csvConverter.convert(filePath,fileType);
                 break;
             case TABLE:
+                csvConverter.convert(filePath);
                 break;
             case XML:
+                csvConverter.convert(filePath,fileType);
                 break;
         }
 
