@@ -1,5 +1,6 @@
 package configs;
 
+import controllers.ConverterController;
 import helpers.FileReader;
 import helpers.SimpleCsvConverter;
 import org.springframework.context.annotation.Bean;
@@ -18,5 +19,10 @@ public class Config {
     @Scope("prototype")
     public FileReader getFileReader() {
         return new FileReader();
+    }
+
+    @Bean
+    @Scope("prototype")
+    public ConverterController getController() {return new ConverterController();
     }
 }

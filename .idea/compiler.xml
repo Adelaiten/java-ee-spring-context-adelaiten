@@ -6,8 +6,11 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="java-ee-spring-context-Adelaiten" />
+        <module name="scc" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="scc" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>

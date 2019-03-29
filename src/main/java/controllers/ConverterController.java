@@ -1,3 +1,5 @@
+package controllers;
+
 import enums.FileTypes;
 import helpers.SimpleCsvConverter;
 
@@ -8,12 +10,8 @@ public class ConverterController {
         int LAST_ITEM_INDEX = args.length-1;
         int TYPE_INDEX = args.length-2;
 
+        ifArgsEmptyOrNotCsvExit(args, LAST_ITEM_INDEX);
 
-        if(args.length == 0 || !(args[LAST_ITEM_INDEX].contains(".csv"))) {
-            System.out.println("No input file defined");
-
-            System.exit(0);
-        }
         String type = "";
 
         filePath += args[LAST_ITEM_INDEX];
@@ -42,6 +40,17 @@ public class ConverterController {
                 break;
         }
 
+    }
+
+
+    private void ifArgsEmptyOrNotCsvExit(String[] args, int LAST_ITEM_INDEX) {
+        int ARGS_LENGTH = args.length;
+        int EMPTY_ARGS =0;
+        if(ARGS_LENGTH == EMPTY_ARGS || !(args[LAST_ITEM_INDEX].contains(".csv"))) {
+            System.out.println("No input file defined");
+
+            System.exit(0);
+        }
     }
 
 }
