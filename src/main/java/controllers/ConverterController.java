@@ -1,17 +1,9 @@
-import configs.Config;
 import enums.FileTypes;
-import helpers.FileReader;
 import helpers.SimpleCsvConverter;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class ConverterApplication {
+public class ConverterController {
 
-    public static void main(String[] args) {
-        ApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
-        SimpleCsvConverter csvConverter = context.getBean(SimpleCsvConverter.class);
-
+    public void run(String args[], SimpleCsvConverter csvConverter) {
         String filePath = "src/main/resources/csv/";
         int LAST_ITEM_INDEX = args.length-1;
         int TYPE_INDEX = args.length-2;
@@ -24,7 +16,7 @@ public class ConverterApplication {
         }
         String type = "";
 
-         filePath += args[LAST_ITEM_INDEX];
+        filePath += args[LAST_ITEM_INDEX];
         if(TYPE_INDEX >= 0) {
             type = args[TYPE_INDEX];
         }
@@ -51,4 +43,5 @@ public class ConverterApplication {
         }
 
     }
+
 }
