@@ -1,6 +1,6 @@
 package helpers;
 
-import enums.FileTypes;
+import enums.FileType;
 import factories.FormatterFactory;
 import formatters.OutputFormatter;
 import formatters.TableOutputFormatter;
@@ -14,7 +14,7 @@ public class SimpleCsvConverter {
         this.fileReader = fileReader;
     }
 
-    public void convert(String file, FileTypes outputFormat){
+    public void convert(String file, FileType outputFormat){
         OutputFormatter outputFormatter = new FormatterFactory().createByFormat(outputFormat);
         List<String[]> data = fileReader.readData(file);
         outputFormatter.printToConsole(data);

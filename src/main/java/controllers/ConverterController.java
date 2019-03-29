@@ -1,6 +1,6 @@
 package controllers;
 
-import enums.FileTypes;
+import enums.FileType;
 import helpers.SimpleCsvConverter;
 
 public class ConverterController {
@@ -12,14 +12,7 @@ public class ConverterController {
         ifArgsEmptyOrNotCsvExit(args, LAST_ITEM_INDEX);
         filePath += args[LAST_ITEM_INDEX];
         String type = addTypeIfExistInArgs(args, TYPE_INDEX);
-        FileTypes fileType;
-
-        if(type.equals("")) {
-            fileType = FileTypes.TABLE;
-        }else {
-            fileType = FileTypes.getType(type);
-
-        }
+        FileType fileType = getFileType(type);
 
         switch(fileType) {
             case JSON:
@@ -33,6 +26,17 @@ public class ConverterController {
                 break;
         }
 
+    }
+
+    private FileType getFileType(String type) {
+        FileType fileType;
+        if(type.equals("")) {
+            fileType = FileType.TABLE;
+        }else {
+            fileType = FileType.getType(type);
+
+        }
+        return fileType;
     }
 
     private String addTypeIfExistInArgs(String[] args, int TYPE_INDEX) {

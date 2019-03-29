@@ -1,18 +1,18 @@
 package enums;
 
-public enum FileTypes {
+public enum FileType {
     XML,
     TABLE,
     JSON;
 
-    public static FileTypes getType(String outputType) {
-        FileTypes[] types = FileTypes.values();
+    public static FileType getType(String outputType) {
+        FileType[] types = FileType.values();
         outputType = outputType.trim().toUpperCase();
-        for(FileTypes type : types) {
+        for(FileType type : types) {
             if(type.toString().equals(outputType)) {
                 return type;
             }
         }
-            return FileTypes.TABLE;
+            return FileType.TABLE;
     }
 }

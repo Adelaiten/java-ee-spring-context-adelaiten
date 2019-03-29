@@ -1,6 +1,6 @@
 package factories;
 
-import enums.FileTypes;
+import enums.FileType;
 import formatters.JsonOutputFormatter;
 import formatters.OutputFormatter;
 import formatters.TableOutputFormatter;
@@ -8,10 +8,10 @@ import formatters.XmlOutputFormatter;
 
 public class FormatterFactory {
 
-    public OutputFormatter createByFormat(FileTypes format) {
-        if(format == FileTypes.JSON) {
+    public OutputFormatter createByFormat(FileType format) {
+        if(format == FileType.JSON) {
             return new JsonOutputFormatter();
-        }else if(format == FileTypes.XML) {
+        }else if(format == FileType.XML) {
             return new XmlOutputFormatter();
         }
         return new TableOutputFormatter();
