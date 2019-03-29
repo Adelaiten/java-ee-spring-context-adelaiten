@@ -8,14 +8,11 @@ public class ConverterController {
     public void run(String args[], SimpleCsvConverter csvConverter) {
         String filePath = "src/main/resources/csv/";
         int LAST_ITEM_INDEX = args.length-1;
-        int TYPE_INDEX = args.length-2;
         ifArgsEmptyOrNotCsvExit(args, LAST_ITEM_INDEX);
         filePath += args[LAST_ITEM_INDEX];
-        String type = addTypeIfExistInArgs(args, TYPE_INDEX);
+        String type = addTypeIfExistInArgs(args);
         FileType fileType = getFileType(type);
-
         convertFileDependingOnFileType(csvConverter, filePath, fileType);
-
     }
 
     private void convertFileDependingOnFileType(SimpleCsvConverter csvConverter, String filePath, FileType fileType) {
@@ -43,8 +40,9 @@ public class ConverterController {
         return fileType;
     }
 
-    private String addTypeIfExistInArgs(String[] args, int TYPE_INDEX) {
+    private String addTypeIfExistInArgs(String[] args) {
         String type = "";
+        int TYPE_INDEX = args.length-2;
         if(TYPE_INDEX >= 0) {
             type = args[TYPE_INDEX];
         }
