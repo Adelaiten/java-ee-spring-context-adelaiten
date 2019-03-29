@@ -9,16 +9,9 @@ public class ConverterController {
         String filePath = "src/main/resources/csv/";
         int LAST_ITEM_INDEX = args.length-1;
         int TYPE_INDEX = args.length-2;
-
         ifArgsEmptyOrNotCsvExit(args, LAST_ITEM_INDEX);
-
-        String type = "";
-
         filePath += args[LAST_ITEM_INDEX];
-        if(TYPE_INDEX >= 0) {
-            type = args[TYPE_INDEX];
-        }
-
+        String type = addTypeIfExistInArgs(args, TYPE_INDEX);
         FileTypes fileType;
 
         if(type.equals("")) {
@@ -40,6 +33,14 @@ public class ConverterController {
                 break;
         }
 
+    }
+
+    private String addTypeIfExistInArgs(String[] args, int TYPE_INDEX) {
+        String type = "";
+        if(TYPE_INDEX >= 0) {
+            type = args[TYPE_INDEX];
+        }
+        return type;
     }
 
 
