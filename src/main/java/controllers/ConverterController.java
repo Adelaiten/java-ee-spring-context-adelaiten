@@ -14,6 +14,11 @@ public class ConverterController {
         String type = addTypeIfExistInArgs(args, TYPE_INDEX);
         FileType fileType = getFileType(type);
 
+        convertFileDependingOnFileType(csvConverter, filePath, fileType);
+
+    }
+
+    private void convertFileDependingOnFileType(SimpleCsvConverter csvConverter, String filePath, FileType fileType) {
         switch(fileType) {
             case JSON:
                 csvConverter.convert(filePath,fileType);
@@ -25,7 +30,6 @@ public class ConverterController {
                 csvConverter.convert(filePath,fileType);
                 break;
         }
-
     }
 
     private FileType getFileType(String type) {
